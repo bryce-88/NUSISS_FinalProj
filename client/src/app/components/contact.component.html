@@ -1,0 +1,55 @@
+<!-- this html page is just a dummy page! -->
+
+
+<mat-toolbar color="primary">
+    <img src="../assets/images/WandaTrip.png" height="50">
+    <mat-icon class="icon">home</mat-icon>
+    <a mat-button [routerLink]="['/view1']">Home</a>
+    <mat-icon class="icon">map</mat-icon>
+    <a mat-button [routerLink]="['/maps']">Find Location</a>
+    <mat-icon>bolt</mat-icon>
+    <a mat-button [routerLink]="['/weather']">Get Weather</a>
+    <span class="flexExpand"></span>
+    <mat-icon>contact_support</mat-icon>
+    <a mat-button [routerLink]="['/contact']">Contact Us</a>&nbsp;
+    <mat-icon class="icon">input</mat-icon>
+    <a mat-button (click)="logout()">Logout</a>
+</mat-toolbar>
+<br>
+
+
+<h1 align="center">
+    We Welcome Your Feedback!
+</h1>
+<body>
+<form [formGroup]="form">
+    <table>
+        <tr>
+            <td>
+                <mat-form-field class="mat-input-wrapper">
+                    <mat-label>Subject: </mat-label>
+                    <input matInput formControlName="subject" placeholder="Field must be filled">
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="mat-input-wrapper">
+                    <mat-label>Message: </mat-label>
+                    <textarea matInput type="text" formControlName="msgBody"></textarea>
+                </mat-form-field>
+            </td>
+        </tr>
+        <br>
+        <tr>
+            <td align="center">
+                <button mat-raised-button color="accent" (click)='submit()'>Submit</button>&nbsp;
+                <button mat-raised-button color="basic" [routerLink]="['/view1']">Back</button>
+            </td>
+        </tr>
+    </table><br>
+    <hr>
+    <footer class="footer"></footer>
+    <p align="center">WandaTrip Pte Ltd Copyright © 2023</p>
+</form>
+</body>

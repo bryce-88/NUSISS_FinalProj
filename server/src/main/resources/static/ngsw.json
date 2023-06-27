@@ -1,0 +1,91 @@
+{
+  "configVersion": 1,
+  "timestamp": 1687796818513,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/484.f3b141e5f68e16ed.js",
+        "/896.011c5e90b578641e.js",
+        "/favicon.ico",
+        "/index.html",
+        "/main.3e10ebf96cf068fc.js",
+        "/manifest.webmanifest",
+        "/polyfills.8c36510d1ab90177.js",
+        "/runtime.f8e7fd6404a68a3e.js",
+        "/styles.11c2c6ab871e7bcb.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/images/WandaTrip.png",
+        "/assets/images/pdf.png",
+        "/assets/images/toolbarBg.jpeg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/484.f3b141e5f68e16ed.js": "ec1aa385bed1c1b2daa948d2c5c8a74bd138ac8d",
+    "/896.011c5e90b578641e.js": "642140652e346bf650c04f2b8217d1e03ba09320",
+    "/assets/icons/icon-128x128.png": "89691fd8a57eece624cc6a702d7a4d4b445e79a5",
+    "/assets/icons/icon-144x144.png": "83d197a6a28488a8d92a25e8103fb3b33ce363fe",
+    "/assets/icons/icon-152x152.png": "2a3bf93d5c31ba04a8d0bb16ebc579f4ba4e2b34",
+    "/assets/icons/icon-192x192.png": "78385f57615323a10ccfe6357e07dd03a1d42681",
+    "/assets/icons/icon-384x384.png": "9694d55e7e61c744549b151412db436949165a3b",
+    "/assets/icons/icon-512x512.png": "e1b798f3b03e4d709c4287d6c65761739b8aca05",
+    "/assets/icons/icon-72x72.png": "4a5d401f8fac6a4abfa1d7d3ddc436b25feb6ccc",
+    "/assets/icons/icon-96x96.png": "72eb8a23577a03108e3899c372d0072e06a18d34",
+    "/assets/images/WandaTrip.png": "c7c1a8bb0df8f7d54e603b7a5bc481fd5f3d51e3",
+    "/assets/images/pdf.png": "1ffd5e1c8ce33832bbcb5ed21820e2914b23756d",
+    "/assets/images/toolbarBg.jpeg": "de261d96f721ee68c501cc51af7c379b199bf8a1",
+    "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/index.html": "b6a1142c8ac5309875cf9b5ef8c05fbfa1fd2c21",
+    "/main.3e10ebf96cf068fc.js": "9d9e529b15ed0cbabc61da9047a65734de31203b",
+    "/manifest.webmanifest": "f9c263d39934fa2e82e5474a544ebf558e6e744a",
+    "/polyfills.8c36510d1ab90177.js": "e5d5d6be5680e25c72c19cf2f8518a7a369eff0c",
+    "/runtime.f8e7fd6404a68a3e.js": "a18b1dfb9e08df956240999650193cb9e79bcfb2",
+    "/styles.11c2c6ab871e7bcb.css": "f16757de288b3c3abcf502052887edd08340cca1"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

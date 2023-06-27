@@ -1,0 +1,55 @@
+.flexExpand {
+    flex: 1 1 auto;
+}
+
+.para {
+    text-align: center;
+}
+
+.para1 {
+    padding: 25px;
+}
+
+.h4 {
+    text-align: center;
+    color: crimson;
+}
+
+.table-container {
+    width: 40%;
+    padding-left: 30%;
+}
+
+td, th {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+a:hover {
+    color: whitesmoke;
+    font: bolder;
+    font-size: large;
+    }
+
+
+.mat-toolbar {
+    background: url('/assets/images/toolbarBg.jpeg') no-repeat bottom;
+    background-size: cover;
+    color: #fff;
+  }
+
+  .footer {
+    text-align: center;
+    height: 40px;
+    background: url('/assets/images/WandaTrip.png');
+    background-repeat: no-repeat;
+    background-size: 10% 100%;
+    background-position: center;
+    bottom: 0;
+}
+
+
+.title:hover {
+    color: crimson;
+    font: bolder;
+}

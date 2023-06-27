@@ -1,0 +1,65 @@
+.flexExpand {
+    flex: 1 1 auto;
+}
+
+.para {
+    text-align: center;
+}
+
+.para1 {
+    padding: 25px;
+}
+
+.h4 {
+    text-align: center;
+    color: crimson;
+}
+
+
+td, th {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+.custom-table {
+    padding-left: 1px;
+    padding-right: 1px;
+    border: 1px solid black;
+    width: 100%;
+    display: table;
+}
+
+.button{
+    margin-right: 1vw;
+    color: white;
+    font-size: 9px;
+    line-height: 18px;
+    height: auto;
+    width: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mat-toolbar {
+    background: url('/assets/images/toolbarBg.jpeg') no-repeat bottom;
+    background-size: cover;
+  }
+
+  .footer {
+    text-align: center;
+    height: 40px;
+    background: url('/assets/images/WandaTrip.png');
+    background-repeat: no-repeat;
+    background-size: 10% 100%;
+    background-position: center;
+    bottom: 0;
+
+}
+
+a:hover {
+    color: whitesmoke;
+    font: bolder;
+    font-size: large;
+    }

@@ -1,0 +1,48 @@
+<mat-toolbar color="primary">
+    <img src="../assets/images/WandaTrip.png" height="50">
+    <mat-icon class="icon">home</mat-icon>
+    <a mat-button [routerLink]="['/view1']">Home</a>
+    <mat-icon class="icon">map</mat-icon>
+    <a mat-button [routerLink]="['/maps']">Find Location</a>
+    <mat-icon>bolt</mat-icon>
+    <a mat-button [routerLink]="['/weather']">Get Weather</a>
+    <span class="flexExpand"></span>
+    <mat-icon>contact_support</mat-icon>
+    <a mat-button [routerLink]="['/contact']">Contact Us</a>&nbsp;
+    <mat-icon class="icon">input</mat-icon>
+    <a mat-button (click)="logout()">Logout</a>
+</mat-toolbar>
+<br>
+
+<body>
+<div class="para1">
+    <form [formGroup]="titleform">
+        <table align="center">
+            <tr>
+                <td>
+                    <mat-form-field>
+                        <mat-label>Title: </mat-label>
+                        <input matNativeControl type="text" formControlName="title" placeholder="Enter a unique title">
+                    </mat-form-field>
+                    <p *ngIf="titleform.controls['title'].invalid && titleform.controls['title'].dirty" class="alert-purple">
+                        <span *ngIf="titleform.controls['title'].errors?.['required']">
+                            This field is required
+                        </span><br>
+                        <span *ngIf="titleform.controls['title'].errors?.['maxlength']">
+                            Title consists of at most 20 characters
+                        </span>                           
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <button mat-raised-button color="accent" [disabled]="titleform.invalid " (click)="addActivities()">Add Activities</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<hr>
+<footer class="footer"></footer>
+<p align="center">WandaTrip Pte Ltd Copyright © 2023</p>
+</body>

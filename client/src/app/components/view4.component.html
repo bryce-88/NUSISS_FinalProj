@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+<body>
+    <mat-toolbar color="primary">
+        <img src="../assets/images/WandaTrip.png" height="50">
+        <mat-icon class="icon">home</mat-icon>
+        <a mat-button [routerLink]="['/view1']">Home</a>
+        <mat-icon class="icon">map</mat-icon>
+        <a mat-button [routerLink]="['/maps']">Find Location</a>
+        <mat-icon>bolt</mat-icon>
+        <a mat-button [routerLink]="['/weather']">Get Weather</a>
+        <span class="flexExpand"></span>
+        <mat-icon>contact_support</mat-icon>
+        <a mat-button [routerLink]="['/contact']">Contact Us</a>&nbsp;
+        <mat-icon class="icon">input</mat-icon>
+        <a mat-button (click)="logout()">Logout</a>
+    </mat-toolbar>
+    <br>
+    <body class="container">
+        <h1 class="para">{{ title }} Itinerary</h1>
+        <div *ngIf="itineraryDetailsList && itineraryDetailsList.length; else noactivity">
+            <table mat-table [dataSource]="itineraryDetailsList" class="custom-table" border="1" width="100%">
+                <col style="width:8%">
+                <col style="width:8%">
+                <col style="width:10%">
+                <col style="width:30%">
+                <col style="width:30">
+                <col style="width:5%">
+                <col style="width:9%">
+                <ng-container matColumnDef="date">
+                    <th class="th" mat-header-cell *matHeaderCellDef> Date </th>
+                    <td mat-cell *matCellDef="let d"> {{ d.activitydate }} </td>
+                </ng-container>
+                <ng-container matColumnDef="time">
+                    <th mat-header-cell *matHeaderCellDef> Time </th>
+                    <td mat-cell *matCellDef="let d"> {{ d.time }} </td>
+                </ng-container>
+                <ng-container matColumnDef="location">
+                    <th mat-header-cell *matHeaderCellDef> Location </th>
+                    <td mat-cell *matCellDef="let d"> {{ d.location }} </td>
+                </ng-container>
+                <ng-container matColumnDef="activity">
+                    <th mat-header-cell *matHeaderCellDef> Activity </th>
+                    <td mat-cell *matCellDef="let d"> {{ d.activity }} </td>
+                </ng-container>
+                <ng-container matColumnDef="comments">
+                    <th mat-header-cell *matHeaderCellDef> Comments </th>
+                    <td mat-cell *matCellDef="let d"> {{ d.comments }} </td>
+                </ng-container>
+                <ng-container matColumnDef="file">
+                    <th mat-header-cell *matHeaderCellDef> Attachment </th>
+                        <td mat-cell *matCellDef="let d">
+                            <ng-container *ngIf="d.file">
+                                <a href="{{d.file}}" target="_blank">
+                                    <img src="../assets/images/pdf.png" height="40px">
+                                </a>
+                            </ng-container>
+                        </td>
+                </ng-container>
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef> Actions </th>
+                    <td mat-cell *matCellDef="let i">
+                        <mat-card-actions>
+                            <button mat-icon-button matTooltip="Edit" color="basic" type="button" (click)="editActivity(i.count)">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button mat-icon-button matTooltip="Delete" color="warn" type="button" (click)="delete(i.count)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </mat-card-actions>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+        <br>
+        <div align="center">
+            <button mat-raised-button color="accent" type="button" [routerLink]="['/view3']">
+                Add Activity
+            </button>
+            &nbsp;
+            <button mat-raised-button color="basic" type="button" [routerLink]="['/view1']">
+                Back
+            </button>
+        </div>
+
+        <br>
+
+        <div *ngIf="toEditStatus">
+            <h3 class="para">Make your changes below.</h3>
+            <form [formGroup]="editForm" (ngSubmit)="update()">
+                <table>
+                    <tr>
+                        <td>
+                            <mat-form-field class="mat-input-wrapper">
+                                <mat-label>Activity Date: </mat-label>
+                                <input matNativeControl type="date" formControlName="activitydate">
+                            </mat-form-field>
+                            <p *ngIf="editForm.controls['activitydate'].invalid && editForm.controls['activitydate'].dirty" class="alert-purple">
+                                <span *ngIf="editForm.controls['activitydate'].errors?.['required']">
+                                    This field is required
+                                </span>                  
+                            </p>
+                        </td>
+                    </tr>
+                    <!-- TODO: Find a library to incorporate 24-hour time format with matInput -->
+                    <tr>
+                        <td>
+                            <mat-form-field class="mat-input-wrapper">
+                                <mat-label>Time: </mat-label>
+                                <input matInput [ngxTimepicker]="picker" [format]="24" formControlName="time">
+                                <ngx-material-timepicker #picker></ngx-material-timepicker>
+                                <!-- <mat-label>Time: </mat-label>
+                                <input matInput formControlName="time" placeholder="Enter start time in 24-hour format ie. HHMM"> -->
+                            </mat-form-field>
+                            <p *ngIf="editForm.controls['time'].invalid && editForm.controls['time'].dirty" class="alert-purple">
+                                <span *ngIf="editForm.controls['time'].errors?.['required']">
+                                    This field is required
+                                </span>                  
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-form-field class="mat-input-wrapper">
+                                <mat-label>Location: </mat-label>
+                                <input matInput type="text" formControlName="location" placeholder="Address">
+                            </mat-form-field>
+                            <p *ngIf="editForm.controls['location'].invalid && editForm.controls['location'].dirty" class="alert-purple">
+                                <span *ngIf="editForm.controls['location'].errors?.['maxlength']">
+                                    Location can only consists of maximum 100 characters
+                                </span>                  
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-form-field class="mat-input-wrapper">
+                                <mat-label>Activity: </mat-label>
+                                <input matInput type="text" formControlName="activity" placeholder="Brief description of activity">
+                            </mat-form-field>
+                            <p *ngIf="editForm.controls['activity'].invalid && editForm.controls['activity'].dirty" class="alert-purple">
+                                <span *ngIf="editForm.controls['activity'].errors?.['required']">
+                                    This field is required
+                                </span>
+                                <span *ngIf="editForm.controls['activity'].errors?.['maxlenth']">
+                                    Activity can only consists of maximum 100 characters
+                                </span>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-form-field class="mat-input-wrapper">
+                                <mat-label>Comments: </mat-label>
+                                <textarea matInput type="text" formControlName="comments" placeholder="Other notes"></textarea>
+                            </mat-form-field>
+                            <p *ngIf="editForm.controls['comments'].invalid && editForm.controls['comments'].dirty" class="alert-purple">
+                                <span *ngIf="editForm.controls['comments'].errors?.['maxlength']">
+                                    Comments can only consists of maximum 300 characters
+                                </span>                  
+                            </p>
+                        </td>
+                    </tr>
+                    <tr *ngIf="this.pdfDataUrl">
+                        <td >
+                            <a href="{{this.pdfDataUrl}}" target="_blank">
+                                <img src="../assets/images/pdf.png" height="40px">
+                            </a>
+                            <button mat-raised-button color="warn" class="button" (click)="removeFile()">Remove</button>
+                        </td>
+                    </tr><br>
+                    <tr *ngIf="!this.pdfDataUrl; else newupload">
+                        <td>
+                            <label class="custom-file-upload">Attachment: </label>
+                            <input type="file" accept="application/pdf" #file>
+                        </td>
+                    </tr>
+                    <br>
+                    <tr>
+                        <td>
+                            <button mat-raised-button color="accent" [disabled]="editForm.invalid" button="submit">Update</button>
+                            &nbsp;
+                            <button mat-raised-button color="basic" (click)="editStatus()">Cancel</button>
+                        </td>
+                    </tr>&nbsp;
+                </table>
+            </form>
+        </div>
+
+
+
+        <ng-template class="container" #noactivity>
+            <h3 class="h4" >
+                No activities planned yet. What are you waiting for?
+            </h3>
+        </ng-template>
+
+        <ng-template class="container" #newupload>
+            <tr>
+                <td>
+                    <label class="custom-file-upload">Overwrite Attachment: </label>
+                    <input type="file" accept="application/pdf" #file>
+                </td>
+            </tr>
+        </ng-template>
+
+        <hr>
+        <footer class="footer"></footer>
+        <p align="center">WandaTrip Pte Ltd Copyright © 2023</p>
+    </body><br>
+
+</body>
+
+</html>
+

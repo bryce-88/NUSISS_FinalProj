@@ -1,0 +1,24 @@
+-- create table user_details (
+-- 	login varchar(50) not null,
+--     password varchar(20) not null,
+--     constraint pk_user_details primary key (login)
+-- );
+
+-- create table itineraries (
+-- 	login varchar(50) not null,
+--     title varchar(20) not null,
+--     constraint pk_itineraries primary key (title)
+-- );
+
+-- create table itinerary_details (
+-- 	count int not null auto_increment,
+--     login varchar(50) not null,
+--     title varchar(20) not null,
+--     activitydate date not null,
+--     time varchar(20),
+--     location varchar(100),
+--     activity varchar(100) not null,
+--     comments varchar(300),
+--     attachment mediumblob,
+--     constraint pk_itinerary_details primary key (count)
+-- );

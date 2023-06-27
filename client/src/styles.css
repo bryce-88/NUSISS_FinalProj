@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.custom-panel-success {
+    /* background-color: gold !important; */
+    text-align: center;
+}
+
+.custom-panel-failure {
+    /* background-color: red !important; */
+    text-align: center;
+}

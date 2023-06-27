@@ -1,0 +1,72 @@
+.input-area {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .display-area {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    justify-content: center;
+    height: calc(100vh - 180px);
+
+    > div {
+      width: 30%;
+      overflow: auto;
+      padding: 8px;
+      height: inherit;
+
+      > * {
+        margin-bottom: 16px;
+      }
+    }
+
+    > app-map-display {
+      width: 70%;
+      height: inherit;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+
+  .display-area[hidden] {
+    display: none;
+  }
+
+  .container {
+    position: relative;
+    min-height: 95vh;
+  }
+
+  app-place-autocomplete {
+    width: 300px;
+  }
+
+  .flexExpand {
+    flex: 1 1 auto;
+}
+
+.mat-toolbar {
+    background: url('/assets/images/toolbarBg.jpeg') no-repeat bottom;
+    background-size: cover;
+  }
+
+
+.footer {
+    text-align: center;
+    height: 40px;
+    background: url('/assets/images/WandaTrip.png');
+    background-repeat: no-repeat;
+    background-size: 10% 100%;
+    background-position: center;
+    bottom: 0;
+}
+
+a:hover {
+  color: whitesmoke;
+  font: bolder;
+  font-size: large;
+  }

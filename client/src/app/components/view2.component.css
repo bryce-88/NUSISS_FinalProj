@@ -1,0 +1,39 @@
+.flexExpand {
+    flex: 1 1 auto;
+}
+
+.para {
+    text-align: center;
+}
+
+.para1 {
+    padding: 25px;
+}
+
+.mat-toolbar {
+    background: url('/assets/images/toolbarBg.jpeg') no-repeat bottom;
+    background-size: cover;
+  }
+  
+  .footer {
+    text-align: center;
+    height: 40px;
+    background: url('/assets/images/WandaTrip.png');
+    background-repeat: no-repeat;
+    background-size: 10% 100%;
+    background-position: center;
+    bottom: 0;
+
+}
+
+a:hover {
+    color: whitesmoke;
+    font: bolder;
+    font-size: large;
+    }
+
+.alert-purple {
+    background-color: rgb(216, 194, 216);
+    border-color: purple;
+    color: purple;
+    }

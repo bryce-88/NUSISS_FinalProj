@@ -1,0 +1,58 @@
+<mat-toolbar color="primary">
+    <img src="../assets/images/WandaTrip.png" height="50">
+    <mat-icon class="icon">home</mat-icon>
+    <a mat-button [routerLink]="['/view1']">Home</a>
+    <mat-icon class="icon">map</mat-icon>
+    <a mat-button [routerLink]="['/maps']">Find Location</a>
+    <mat-icon>bolt</mat-icon>
+    <a mat-button [routerLink]="['/weather']">Get Weather</a>
+    <span class="flexExpand"></span>
+    <mat-icon>contact_support</mat-icon>
+    <a mat-button [routerLink]="['/contact']">Contact Us</a>&nbsp;
+    <mat-icon class="icon">input</mat-icon>
+    <a mat-button (click)="logout()">Logout</a>
+</mat-toolbar>
+
+<body>
+    <div class="para1">
+        <h1 align="center">Which City Would You Like to Search?</h1>
+        <form [formGroup]="form" (ngSubmit)="getWeather()">
+            <p align="center" >
+                <mat-form-field [style.width.px]=327>
+                    <mat-label>City: </mat-label>
+                    <input matNativeControl type="text" formControlName="city">
+                </mat-form-field>
+            </p>
+            <p class="error" *ngIf="error">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                {{ error }}
+            </p>
+            <p align="center" >
+                <button mat-raised-button color="accent" [disabled]="form.invalid">And the weather is...</button>
+            </p>
+
+        </form>
+
+    </div><br>
+
+    <div *ngIf="showWeather" align="center">
+        <mat-card class="card">
+            <mat-card-header>
+                <mat-card-title>{{ weather.city | titlecase }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <img src="https://openweathermap.org/img/wn/{{ weather.icon }}@2x.png">
+                <p> {{ weather.description }} </p>
+                <p> Temperature: {{ weather.temp | number: '1.0-1' }}°C </p>
+                <p> Lowest Temperature: {{ weather.tempMin | number: '1.0-1' }}°C </p>
+                <p> Highest Temperature: {{ weather.tempMax | number: '1.0-1' }}°C </p>
+                <p> Feels Like: {{ weather.feelsLike | number: '1.0-1' }}°C </p>
+                <p> Humidity: {{ weather.humidity }}% </p>
+            </mat-card-content>
+        </mat-card><br>
+    </div>
+
+    <hr>
+    <footer class="footer"></footer>
+    <p align="center">WandaTrip Pte Ltd Copyright © 2023</p>
+</body>
